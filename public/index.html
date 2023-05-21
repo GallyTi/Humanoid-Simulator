@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A-Frame GLTF Loader</title>
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+    <!-- Bootstrap JS and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>    
+  </head>
+</head>
+<body>
+  <div style="display: flex;">
+    <div id="mySidebar" class="sidebar">
+        <div class="controls">
+              <label>
+                Model:
+                <select id="modelSelector">
+                  <option value="">-- Select a model --</option>
+                </select>
+              </label>
+              <label>
+                Animation:
+                <select id="animationSelector">
+                  <option value="">-- Select an animation --</option>
+                </select>
+                <input type="checkbox" id="resetOnNewAnimation" checked> Reset position on new animation
+              </label>
+              
+              <label>
+                Joint:
+                <select id="jointSelector">
+                  <option value="">-- Select a joint --</option>
+                </select>
+              </label>
+              <label>X rotation: <input id="xRotation" type="range" min="-180" max="180" value="0" /></label>
+              <label>Y rotation: <input id="yRotation" type="range" min="-180" max="180" value="0" /></label>
+              <label>Z rotation: <input id="zRotation" type="range" min="-180" max="180" value="0" /></label>
+              <button id="recordButton">Start Recording</button>
+              <button id="playButton" disabled>Play</button>
+              <div>
+                <input type="checkbox" id="disableLimitsCheckbox" name="disableCheck">
+                <label for="disableCheck">Disable limits</label>
+              </div>
+    
+              <form id="uploadForm" enctype="multipart/form-data">
+                <label>
+                    Upload animation: 
+                    <input type="file" id="animationFile" name="animationFile" accept=".json">
+                </label>
+                <input type="submit" value="Upload Animation">
+              </form>
+              
+              <form id="uploadModelForm" enctype="multipart/form-data">
+                <label>
+                  Upload model: 
+                  <input type="file" id="modelFile" name="model" accept=".gltf, .glb">
+                </label>
+                <input type="submit" value="Upload Model">
+              </form>
+
+              <form id="uploadLimitsForm" enctype="multipart/form-data">
+                <label>
+                  Upload limits: 
+                  <input type="file" id="limitsFile" name="limits" accept=".json">
+                </label>
+                <input type="submit" value="Upload Limits">
+              </form>
+            </div>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+          </div>
+      </div>
+
+      <!--A-frame Component-->
+      <div id="main">
+        <h2 style="position: fixed; align-items: center; z-index: 1000; top:15px; left: 50%; transform: translateX(-50%); font-weight: bold;">Humanoid robot simulator</h2>
+
+        <button id="controlsButton" onclick="openNav()" style="position: fixed; top: 20px; left: 20px; z-index: 1000;">Open Controls</button>
+        <div id="aframe-container">
+          <a-scene 
+          embedded  
+          >
+
+        <a-assets>
+          <img id="myTexture" src="props/box/nico_box_Albedo.png">
+          <img id="wallTexture" src="props/walls/wall.jpg">
+          <img id="tuke" src="props/walls/tuke.jpg">
+          <img id="uk" src="props/walls/uk.jpg">
+          <img id="hamb" src="props/walls/hamburg.jpg">
+          <img id="wood-floor" src="props/walls/wooden-floor.jpg">
+          <img id="wood-table" src="props/table/wood-table.jpg">
+          <img id="metal-legs" src="props/table/metalic-for-legs.jpg">
+        </a-assets>
+
+          <a-entity>
+            <!-- Floor -->
+            <a-plane position="0 -1.5 0" rotation="-90 0 0" width="10" height="10" material="src: #wood-floor" repeat="4 4" shadow="receive: true"></a-plane>
+            <!-- Ceiling -->
+            <a-plane position="0 1.5 0" rotation="90 0 0" width="10" height="10" material="src: #wallTexture" repeat="3 3" shadow="receive: true"></a-plane>
+            <!-- Walls -->
+            <a-box position="5 0 0" rotation="0 0 0" width="0.1" height="3" depth="10" material="src: #wallTexture" repeat="3 3" shadow="receive: true"></a-box>
+            <a-box position="-5 0 0" rotation="0 0 0" width="0.1" height="3" depth="10" material="src: #wallTexture" repeat="3 3" shadow="receive: true"></a-box>
+            <a-box position="0 0 5" rotation="0 0 0" width="10" height="3" depth="0.1" material="src: #wallTexture" repeat="3 3" shadow="receive: true"></a-box>
+            <a-box position="0 0 -5" rotation="0 0 0" width="10" height="3" depth="0.1" material="src: #wallTexture" repeat="3 3" shadow="receive: true"></a-box>
+
+            <!-- Light source -->
+            <a-light type="ambient" color="#445451"></a-light>
+            <a-light type="point" intensity="1.05" distance="17" decay="1.6" position="2.23 1.500 1.2" color="#ccffcc" shadow="cast: true"></a-light>
+            <a-light type="point" intensity="1.05" distance="17" decay="1.6" position="-2.23 1.500 1.2" color="#ccffcc" shadow="cast: true"></a-light>
+            <a-light type="point" intensity="0.8" distance="17" decay="1.6" position="0 0.9 -0.9" color="#ccffcc" shadow="cast: true"></a-light>
+
+
+            <a-plane position="3.3 0 -4.900" rotation="0 0 0" width="2.525" height="1.4" material="src: #tuke; color: white" shadow="receive: true"></a-plane>
+            <a-plane position="0 0.6 -4.900" rotation="0 0 0" width="2.4" height="1" material="src: #hamb; color: white" shadow="receive: true"></a-plane>
+            <a-plane position="-3.3 0 -4.900" rotation="0 0 0" width="2.525" height="1" material="src: #uk; color: white" shadow="receive: true"></a-plane>
+          </a-entity>
+          <a-entity scale="2 2 2">
+            
+            <a-entity>
+              <!-- Table top -->
+              <a-box position="0 -0.3 -1" width="1.5" height="0.05" depth="0.6" material="src: #wood-table"></a-box>
+              <!-- Table leg -->
+              <a-box width="0.05" height="0.5" depth="0.05" material="src: #metal-legs" position="-0.7 -0.55 -0.74" rotation="0 0 0"></a-box>
+              <a-box width="0.05" height="0.5" depth="0.05" material="src: #metal-legs" position="-0.7 -0.55 -1.25" rotation="0 0 0"></a-box>
+              <a-box width="0.05" height="0.5" depth="0.05" material="src: #metal-legs" position="0.7 -0.55 -0.74" rotation="0 0 0"></a-box>
+              <a-box width="0.05" height="0.5" depth="0.05" material="src: #metal-legs" position="0.7 -0.55 -1.25" rotation="0 0 0"></a-box>
+            </a-entity>
+
+
+            <a-entity
+                id="model"
+                gltf-model="models/nico.gltf"
+                position="0 -0.8 -1"
+                rotation="0 -90 0"
+                animation-mixer
+                shadow="cast: true; recieve: true"
+            ></a-entity>
+          </a-entity>
+          <a-entity camera look-controls wasd-controls>
+            <a-entity
+                id="cursor"
+                cursor="rayOrigin: mouse; fuse: false"
+                raycaster="objects: .clickable"
+                position="0 0 -1"
+                material="color: #F00; shader: flat; opacity: 0.75"
+            ></a-entity>
+          </a-entity>    
+
+          <div id="camera-controls" class="camera-controls">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeCameraControls()">×</a>
+            <div class="header">Camera Controls</div>
+            <button id="cameraButton1">Switch to Camera 1</button>
+            <button id="cameraButton2">Switch to Camera 2</button>
+          </div>
+          <button id="camera-controls-button" onclick="openCameraControls()" style="position: fixed; top: 20px; right: 20px; z-index: 1000;">Cameras</button>
+
+          <a-entity id="staticCamera1" camera="active: false" position="0.6 -0.1 -0.85" rotation="0 85 0"></a-entity>
+          <a-entity id="staticCamera2" camera="active: false" position="-0.6 -0.1 -0.85" rotation="0 -85 0"></a-entity>
+
+          </a-scene>
+        </div>
+      </div>
+    </div>
+    
+    <script type="module" src="script.js"></script>
+
+    <script>
+      function openNav() {
+        document.getElementById("mySidebar").classList.add('open');
+        document.getElementById("controlsButton").style.display = "none";
+      }
+    
+      function closeNav() {
+        document.getElementById("mySidebar").classList.remove('open');
+        document.getElementById("controlsButton").style.display = "block";
+      }
+
+      function openCameraControls() {
+        document.getElementById("camera-controls").classList.add('open');
+        document.getElementById("camera-controls-button").style.display = "none";
+      }
+
+      function closeCameraControls() {
+        document.getElementById("camera-controls").classList.remove('open');
+        document.getElementById("camera-controls-button").style.display = "block";
+      }
+    </script>
+    <script>
+      //For controling Cameras
+      window.addEventListener("DOMContentLoaded", (event) => {
+      let scene = document.querySelector('a-scene');
+      
+      scene.addEventListener('loaded', function () {
+        let clickCount = 0;
+
+        function switchCamera(activeCameraId, inactiveCamera1Id, inactiveCamera2Id) {
+          let mainCamera = document.querySelector('[wasd-controls][camera]');
+          let activeCamera = document.querySelector(`#${activeCameraId}`);
+          let inactiveCamera1 = document.querySelector(inactiveCamera1Id == '[wasd-controls][camera]' ? inactiveCamera1Id : `#${inactiveCamera1Id}`);
+          let inactiveCamera2 = document.querySelector(inactiveCamera2Id == '[wasd-controls][camera]' ? inactiveCamera2Id : `#${inactiveCamera2Id}`);
+
+          if (mainCamera == null || activeCamera == null || inactiveCamera1 == null || inactiveCamera2 == null) {
+            console.error("One or more camera elements not found");
+            return;
+          }
+
+          if(clickCount % 3 === 0){
+              activeCamera.setAttribute("camera", "active", true);
+              inactiveCamera1.setAttribute("camera", "active", false);
+              inactiveCamera2.setAttribute("camera", "active", false);
+          } else if(clickCount % 3 === 2){
+              mainCamera.setAttribute("camera", "active", true);
+              activeCamera.setAttribute("camera", "active", false);
+              inactiveCamera1.setAttribute("camera", "active", false);
+          }
+
+          clickCount++;
+        }
+
+        document.getElementById("cameraButton1").addEventListener("click", e => {
+          e.stopPropagation();
+          switchCamera("staticCamera1", "staticCamera2", "[wasd-controls][camera]");
+        });
+
+        document.getElementById("cameraButton2").addEventListener("click", e => {
+          e.stopPropagation();
+          switchCamera("staticCamera2", "staticCamera1", "[wasd-controls][camera]");
+        });
+
+        window.addEventListener("click", function () {
+            let mainCamera = document.querySelector("[wasd-controls][camera]");
+            let staticCamera1 = document.querySelector("#staticCamera1");
+            let staticCamera2 = document.querySelector("#staticCamera2");
+
+            if (mainCamera == null || staticCamera1 == null || staticCamera2 == null) {
+              console.error("One or more camera elements not found");
+              return;
+            }
+
+            mainCamera.setAttribute("camera", "active", true);
+            staticCamera1.setAttribute("camera", "active", false);
+            staticCamera2.setAttribute("camera", "active", false);
+        });
+      });
+    });
+    </script>
+  </body>
+</html>
+
+
+
+

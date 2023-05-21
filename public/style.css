@@ -1,0 +1,121 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#aframe-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.sidebar {
+  z-index: 1001;
+  height: 100%;
+  width: 250px; /* Set a width here */
+  position: fixed;
+  top: 0;
+  left: -250px; /* Initially hide the sidebar by pushing it to the left */
+  background-color: #bababa;
+  overflow: auto;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar.open {
+  left: 0; /* Show the sidebar by setting left to 0 */
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.controls {
+  margin: 10%;
+}
+
+a-scene {
+  width: 100%;
+  height: 100vh;
+}
+
+.modal-backdrop {
+  position: static;
+  z-index: 1050;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+
+.camera-controls {
+  margin: auto;
+  z-index: 1001;
+  height: auto;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  right: -250px; /* Initially hide the sidebar by pushing it to the right */
+  background-color: #bababa;
+  overflow: auto;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+
+.camera-controls button {
+  display: block;
+  margin: 5px;
+  padding: 5px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.camera-controls button:hover {
+  background-color: #f1f1f1;
+}
+
+.camera-controls .header {
+  padding: 8px 32px;
+  font-size: 25px;
+  color: #818181;
+  text-align: center;
+}
+
+.camera-controls.open {
+  right: 0; /* Show the sidebar by setting right to 0 */
+}
+
+.camera-controls .closebtn {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#camera-controls-button {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  z-index: 1000;
+}

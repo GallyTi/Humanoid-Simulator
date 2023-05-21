@@ -1,0 +1,631 @@
+{
+    "joints": [
+        {
+            "name": "body_torso",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_shoulder",
+            "max": {
+                "rotation": [
+                    0,
+                    2.181999921798706,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.7450000047683716,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_collarbone",
+            "max": {
+                "rotation": [
+                    0,
+                    3.124000072479248,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -3.1419999599456787,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_upper_arm",
+            "max": {
+                "rotation": [
+                    0,
+                    1.8674999475479126,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -3.002000093460083,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_lower_arm",
+            "max": {
+                "rotation": [
+                    0,
+                    1.7450000047683716,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.7450000047683716,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_wrist",
+            "max": {
+                "rotation": [
+                    0,
+                    1.5709999799728394,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.5709999799728394,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_palm",
+            "max": {
+                "rotation": [
+                    0,
+                    0.8726649880409241,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_indexfinger_1",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_indexfinger_2",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_indexfinger_3",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_ringfinger_1",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_ringfinger_2",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_ringfinger_3",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_thumb_1",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_thumb_2",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "right_thumb_3",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "body_neck",
+            "max": {
+                "rotation": [
+                    0,
+                    3.1419999599456787,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -3.124000072479248,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "head_of_nico",
+            "max": {
+                "rotation": [
+                    0,
+                    1.378999948501587,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.5529999732971191,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_shoulder",
+            "max": {
+                "rotation": [
+                    0,
+                    1.7450000047683716,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -2.181999921798706,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_collarbone",
+            "max": {
+                "rotation": [
+                    0,
+                    3.1419999599456787,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -3.124000072479248,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_upper_arm",
+            "max": {
+                "rotation": [
+                    0,
+                    3.002000093460083,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.8674999475479126,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_lower_arm",
+            "max": {
+                "rotation": [
+                    0,
+                    1.7450000047683716,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.7450000047683716,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_wrist",
+            "max": {
+                "rotation": [
+                    0,
+                    1.5709999799728394,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.5709999799728394,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_palm",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -0.8726649880409241,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_indexfinger_1",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_indexfinger_2",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_indexfinger_3",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_ringfinger_1",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_ringfinger_2",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_ringfinger_3",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_thumb_1",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_thumb_2",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "left_thumb_3",
+            "max": {
+                "rotation": [
+                    0,
+                    0.0,
+                    0
+                ],
+                "effort": 30,
+                "speed": 1
+            },
+            "min": {
+                "rotation": [
+                    0,
+                    -1.309000015258789,
+                    0
+                ]
+            }
+        }
+    ]
+}
